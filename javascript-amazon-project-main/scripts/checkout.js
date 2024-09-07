@@ -3,6 +3,8 @@ import { products } from "../data/products.js";
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import {deliveryOptions} from "../data/deliveryOptions.js"
 
+
+function renderOrderSummary(){
 let cartHtmlList = '';
 cart.forEach((cartItem) =>{
     let productId = cartItem.productId;
@@ -13,7 +15,6 @@ cart.forEach((cartItem) =>{
             matchingItem = product;
         }
     });
-
 
     //This code is for add delivery date displayed above the product picture
     let deliveryOptionId = cartItem.deliveryOptionId;
@@ -125,6 +126,7 @@ document.querySelectorAll('.delivery-option').forEach((option) =>{
         console.log(productId);
         console.log(deliveryOptionId);
         updateDeliveryOption(productId,deliveryOptionId);
+        renderOrderSummary();
     });
 });
 
@@ -137,6 +139,6 @@ document.querySelectorAll('.delete-quantity-link').forEach((button)=>{
         document.querySelector(`.cart-item-container-${productId}`).remove();
      })
 });
+}
 
-
-
+renderOrderSummary();
