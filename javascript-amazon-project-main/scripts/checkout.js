@@ -14,10 +14,26 @@ cart.forEach((cartItem) =>{
         }
     });
 
+
+    //This code is for add delivery date displayed above the product picture
+    let deliveryOptionId = cartItem.deliveryOptionId;
+
+    let matchedOption;
+    deliveryOptions.forEach((deliveryOption) =>{
+        if(deliveryOption.id === deliveryOptionId){
+            matchedOption = deliveryOption;
+        }
+    }); 
+
+    let today = dayjs();
+    let deliveryDate = today.add(matchedOption.deliveryDays, 'days');
+    let dateString = deliveryDate.format('dddd, MMMM D');
+    //End of code is for add delivery date displayed above the product picture
+
     let html =  `
             <div class="cart-item-container-${matchingItem.id}">
             <div class="delivery-date">
-                Delivery date: Tuesday, June 21
+                Delivery date: ${dateString}
             </div>
 
             <div class="cart-item-details-grid">
@@ -56,7 +72,12 @@ cart.forEach((cartItem) =>{
         `;
 
     cartHtmlList += html;
+
+   
 });
+document.querySelector('.order-summary').innerHTML = cartHtmlList;
+
+
 
     // This is a function to generate the html of delivery options
     //1.First, we loop through delivery options and for each option we generate some html
@@ -94,7 +115,6 @@ cart.forEach((cartItem) =>{
         return deliveryHtmllist;
 }
 
-document.querySelector('.order-summary').innerHTML = cartHtmlList;
 
 document.querySelectorAll('.delete-quantity-link').forEach((button)=>{
      button.addEventListener('click', ()=>{

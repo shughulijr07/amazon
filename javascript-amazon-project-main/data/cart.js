@@ -19,7 +19,6 @@ if(!cart){
     ];
 }
 
-
 export function saveToStorage(){
     localStorage.setItem('cart', JSON.stringify(cart));
 }
@@ -50,7 +49,6 @@ export function updateQuantity(){
 }
 
 export function removeToCart(productId){
-
     let newCart = [];
     cart.forEach((cartItem) =>{
       if(cartItem.productId !== productId){
