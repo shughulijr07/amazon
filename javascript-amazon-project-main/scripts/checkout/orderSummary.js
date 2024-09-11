@@ -2,12 +2,12 @@ import { cart , removeToCart, updateDeliveryOption } from "../../data/cart.js";
 import { products } from "../../data/products.js";
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import {deliveryOptions} from "../../data/deliveryOptions.js"
+import { renderPaymentSummary } from "./paymentSummary.js";
 
 export function renderOrderSummary(){
 let cartHtmlList = '';
 cart.forEach((cartItem) =>{
     let productId = cartItem.productId;
-
     let matchingItem;
     products.forEach((product) =>{
         if(product.id === productId){
@@ -101,10 +101,10 @@ document.querySelector('.order-summary').innerHTML = cartHtmlList;
                     name="delivery-option-${matchingItem.id}">
                     <div>
                     <div class="delivery-option-date">
-                        ${dateString}
+                         ${dateString}
                     </div>
                     <div class="delivery-option-price">
-                        $${priceString} - Shipping
+                         Tsh ${priceString} - Shipping
                     </div>
                     </div>
                 </div>
@@ -120,6 +120,7 @@ document.querySelectorAll('.delivery-option').forEach((option) =>{
         let deliveryOptionId = option.dataset.deliveryOptionId;
         updateDeliveryOption(productId,deliveryOptionId);
         renderOrderSummary();
+        renderPaymentSummary();
     });
 });
 
@@ -128,8 +129,12 @@ document.querySelectorAll('.delete-quantity-link').forEach((button)=>{
         let productId = button.dataset.productId;
 
         removeToCart(productId);
-        console.log(cart);
-        document.querySelector(`.cart-item-container-${productId}`).remove();
+
+        let container = document.querySelector(`.cart-item-container-${productId}`);
+        container.remove();
+
+        renderPaymentSummary();
+
      })
 });
 }
