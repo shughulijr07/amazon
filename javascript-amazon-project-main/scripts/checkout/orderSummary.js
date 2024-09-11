@@ -75,9 +75,6 @@ cart.forEach((cartItem) =>{
 
 });
 document.querySelector('.order-summary').innerHTML = cartHtmlList;
-
-
-
     // This is a function to generate the html of delivery options
     //1.First, we loop through delivery options and for each option we generate some html
     //2.Generate the html 
@@ -121,8 +118,6 @@ document.querySelectorAll('.delivery-option').forEach((option) =>{
     option.addEventListener('click', ()=>{
         let productId = option.dataset.productId;
         let deliveryOptionId = option.dataset.deliveryOptionId;
-        console.log(productId);
-        console.log(deliveryOptionId);
         updateDeliveryOption(productId,deliveryOptionId);
         renderOrderSummary();
     });
