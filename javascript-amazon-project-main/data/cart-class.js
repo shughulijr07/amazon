@@ -1,9 +1,14 @@
-function Cart(localStorageKey){
-    let cart = {
-        cartItems : undefined,
-    
-        loadFromStorage: function(){ // Make sure u use regural function instead of arrow function =>{} when creating a function inside an object
-            this.cartItems = JSON.parse(localStorage.getItem(localStorageKey)); // this stands for cart, we use this so that even if u decide to change the object name from let's say cart to anything else,no problem can occur
+class Cart {
+    cartItems;
+    localStorageKey;
+
+    constructor(localStorageKey){
+        this.localStorageKey = localStorageKey;
+        this.loadFromStorage();
+    }
+
+    loadFromStorage(){ // Make sure u use regural function instead of arrow function =>{} when creating a function inside an object
+            this.cartItems = JSON.parse(localStorage.getItem(this.localStorageKey)); // this stands for cart, we use this so that even if u decide to change the object name from let's say cart to anything else,no problem can occur
             if(!this.cartItems){
             this.cartItems =  [
                     {
@@ -22,11 +27,12 @@ function Cart(localStorageKey){
                         deliveryOptionId: '2'
                     }
                 ];
-            }},
-    
-              saveToStorage: function(){
-                localStorage.setItem(localStorageKey, JSON.stringify(this.cartItems));
-            },
+            }}
+
+            
+            saveToStorage(){
+                localStorage.setItem(this.localStorageKey, JSON.stringify(this.cartItems));
+            }
     
              addToCart(productId){
                 let matchingItem;
@@ -43,7 +49,7 @@ function Cart(localStorageKey){
                 }
             
                 this.saveToStorage();
-            } ,
+            } 
     
             removeToCart(productId){ //this is called shorthand method, the same as writing removeToCart: (productid){
                 let newCart = [];
@@ -54,7 +60,7 @@ function Cart(localStorageKey){
                 });
                   this.cartItems = newCart;
                   this.saveToStorage()
-            },
+            }
             
             updateDeliveryOption(productId,deliveryOptionId){
     
@@ -67,7 +73,7 @@ function Cart(localStorageKey){
             
                 matchingOption.deliveryOptionId = deliveryOptionId;
                 this.saveToStorage();
-            },
+            }
     
             updateQuantity(){
                 let totalQuantity = 0;
@@ -76,17 +82,15 @@ function Cart(localStorageKey){
                 });
                 document.querySelector('.cart-quantity').innerHTML = totalQuantity;
             }
-    };
-
-    return cart;
 }
 
-let cart = Cart('cart-oop');
-let businessCart = Cart('cart-business');
+
+let cart = new Cart('cart-oop');
+let businessCart = new Cart('cart-business');
 
 
-cart.loadFromStorage();
-businessCart.loadFromStorage();
 
 console.log(cart);
 console.log(businessCart);
+
+
