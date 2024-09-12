@@ -31,6 +31,27 @@ class Product{
     let price = this.price * 10;
     return `Tsh ${price.toLocaleString()}`;
   }
+
+  extraInfoHtml(){
+    return '';
+  }
+}
+
+class Clothing extends Product {
+  sizeChartLink;
+  
+  constructor(productDetails){
+    super(productDetails);
+    this.sizeChartLink = productDetails.sizeChartLink;
+}
+
+ extraInfoHtml(){ //Method oveeriding, it ovveride the extraInfoHtml from the parent class
+  return `
+    <a href="${this.sizeChartLink}" target="_blank">
+    Size Chart</a>
+  `;
+ }
+
 }
 
 export const products = [
@@ -525,7 +546,7 @@ export const products = [
     ]
   },
   {
-    id: "a45cfa0a-66d6-4dc7-9475-e2b01595f7d7",
+    id: "a45cfa0a-66d6-4dc7-9475-e2b01595f7d7", 
     image: "images/products/women-french-terry-fleece-jogger-camo.jpg",
     name: "Women's Fleece Jogger Sweatpant",
     rating: {
@@ -693,7 +714,8 @@ export const products = [
     ]
   }
 ].map((productDetails) =>{
+  if(productDetails.type === 'clothing'){
+    return new Clothing(productDetails);
+  }
   return new Product(productDetails);
 });
-
-console.log(products)
