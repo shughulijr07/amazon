@@ -51,9 +51,30 @@ class Clothing extends Product {
     Size Chart</a>
   `;
  }
-
 }
 
+export let products = [];
+
+function loadProducts(){
+  let xhr = new XMLHttpRequest();
+  xhr.addEventListener('load', ()=>{
+     products = JSON.parse(xhr.response).map((productDetails) =>{ //JSON.parse convert json to javascript object and we convert to a class using .map() function
+      if(productDetails.type === 'clothing'){
+        return new Clothing(productDetails);
+      }
+      return new Product(productDetails);
+    });  
+
+    // console.log(products);
+  });
+
+  xhr.open('GET', 'https://supersimplebackend.dev/products');    
+  xhr.send();                                      
+}
+
+loadProducts();
+
+/*
 export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
@@ -143,7 +164,7 @@ export const products = [
     keywords: [
       "kitchen",
       "cookware"
-    ]
+    ] 
   },
   {
     id: "dd82ca78-a18b-4e2a-9250-31e67412f98d",
@@ -719,3 +740,4 @@ export const products = [
   }
   return new Product(productDetails);
 });
+*/
