@@ -1,13 +1,30 @@
 import {renderOrderSummary} from './checkout/orderSummary.js';
 import { renderPaymentSummary } from './checkout/paymentSummary.js';
-import { products, loadProducts } from '../data/products.js';
+import { products } from '../data/products.js';
 import { cart } from '../data/cart.js';
 
-loadProducts(displayCart);
+renderOrderSummary();
+renderPaymentSummary();
 
-function displayCart(){
-    renderOrderSummary();
-    renderPaymentSummary();
-}
+
+// loadProducts(displayCart);
+
+// function displayCart(){
+//     renderOrderSummary();
+//     renderPaymentSummary();
+// }
+
+/* If solution above fail try this one below
+new Promise((resolve) =>{
+    loadProducts(() =>{
+        resolve();
+    })
+}).then(() =>{
+   renderOrderSummary();
+   renderPaymentSummary();
+});
+
+*/
+
 
 

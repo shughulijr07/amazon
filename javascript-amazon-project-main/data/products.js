@@ -13,14 +13,14 @@ class Product{
   image;
   name; 
   rating;
-  priceCents;
+  price;
 
   constructor(productDetails){
     this.id = productDetails.id;
     this.image = productDetails.image;
     this.name = productDetails.name;
     this.rating = productDetails.rating;
-    this.priceCents = productDetails.priceCents;
+    this.price = productDetails.price;
   };
 
    getStarsUrl() {
@@ -28,7 +28,7 @@ class Product{
   }
 
   getPrice(){ 
-    let price = this.priceCents * 10;
+    let price = this.price * 10;
     return `Tsh ${price.toLocaleString()}`;
   }
 
@@ -52,7 +52,7 @@ class Clothing extends Product {
   `;
  }
 }
-
+/* This is for backend and depends on internet connection
 export let products = [];
 
 export function loadProducts(fun){
@@ -68,17 +68,21 @@ export function loadProducts(fun){
     console.log(products)
 
     // We display product data after wait the http to finish first and load those data from the backend
-    // console.log(products)
+    if(!products){
+      products = productsNew;
+    }
     fun();
   });
 
   xhr.open('GET', 'https://supersimplebackend.dev/products');    
   xhr.send();                                      
 }
+  End of backend that depend on internet connection */ 
+
+
  /*Polymorphism - use a method without knowing to which a class it belongs to */
 
-/*
-export const products = [
+ export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
     image: "images/products/athletic-cotton-socks-6-pairs.jpg",
@@ -743,4 +747,3 @@ export const products = [
   }
   return new Product(productDetails);
 });
-*/
