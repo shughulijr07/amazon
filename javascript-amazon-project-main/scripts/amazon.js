@@ -1,8 +1,14 @@
-import {products} from "../data/products.js";
+import {products, loadProducts} from "../data/products.js";
 import { addToCart, updateQuantity } from "../data/cart.js";
 
+
+// console.log(products);
+loadProducts(renderProductGrid);
+
+function renderProductGrid(){
 let productHtmlList = '';
 products.forEach((product) =>{
+  
     let html = `
         <div class="product-container">
           <div class="product-image-container">
@@ -41,7 +47,7 @@ products.forEach((product) =>{
             </select>
           </div>
 
-          ${product.extraInfoHtml()} //Polymorphism - use a method without knowing to which a class it belongs to
+          ${product.extraInfoHtml()}
 
           <div class="product-spacer"></div>
 
@@ -68,3 +74,4 @@ products.forEach((product) =>{
         });
     });
 
+  }

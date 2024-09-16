@@ -11,24 +11,24 @@ export function getproduct(productId){
 class Product{
   id;
   image;
-  name;
+  name; 
   rating;
-  price;
+  priceCents;
 
   constructor(productDetails){
     this.id = productDetails.id;
     this.image = productDetails.image;
     this.name = productDetails.name;
     this.rating = productDetails.rating;
-    this.price = productDetails.price;
+    this.priceCents = productDetails.priceCents;
   };
 
    getStarsUrl() {
     return `images/ratings/rating-${this.rating.stars *10}.png`
   }
 
-  getPrice(){
-    let price = this.price * 10;
+  getPrice(){ 
+    let price = this.priceCents * 10;
     return `Tsh ${price.toLocaleString()}`;
   }
 
@@ -55,24 +55,27 @@ class Clothing extends Product {
 
 export let products = [];
 
-function loadProducts(){
+export function loadProducts(fun){
   let xhr = new XMLHttpRequest();
   xhr.addEventListener('load', ()=>{
-     products = JSON.parse(xhr.response).map((productDetails) =>{ //JSON.parse convert json to javascript object and we convert to a class using .map() function
+     products = JSON.parse(xhr.response).map((productDetails) =>{ 
+      //JSON.parse convert json to javascript object and we convert to a class using .map() function
       if(productDetails.type === 'clothing'){
         return new Clothing(productDetails);
       }
       return new Product(productDetails);
     });  
+    console.log(products)
 
-    // console.log(products);
+    // We display product data after wait the http to finish first and load those data from the backend
+    // console.log(products)
+    fun();
   });
 
   xhr.open('GET', 'https://supersimplebackend.dev/products');    
   xhr.send();                                      
 }
-
-loadProducts();
+ /*Polymorphism - use a method without knowing to which a class it belongs to */
 
 /*
 export const products = [

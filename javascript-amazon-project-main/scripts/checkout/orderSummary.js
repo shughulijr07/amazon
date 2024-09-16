@@ -10,6 +10,7 @@ cart.forEach((cartItem) =>{
     let productId = cartItem.productId;
     let matchingItem;
     products.forEach((product) =>{
+        console.log(product)
         if(product.id === productId){
             matchingItem = product;
         }
@@ -30,7 +31,6 @@ cart.forEach((cartItem) =>{
     let dateString = deliveryDate.format('dddd, MMMM D');
     //End of code is for add delivery date displayed above the product picture
 
-    let price = matchingItem.price * 10;
     let html =  `
         <div class="cart-item-container-${matchingItem.id}">
             <div class="delivery-date">
