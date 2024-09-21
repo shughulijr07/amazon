@@ -1,4 +1,4 @@
-import { cart , removeToCart, updateDeliveryOption } from "../../data/cart.js";
+import { cart , removeToCart, updateCart, updateDeliveryOption } from "../../data/cart.js";
 import { products } from "../../data/products.js";
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import {deliveryOptions} from "../../data/deliveryOptions.js"
@@ -10,7 +10,7 @@ cart.forEach((cartItem) =>{
     let productId = cartItem.productId;
     let matchingItem;
     products.forEach((product) =>{
-        console.log(product)
+
         if(product.id === productId){
             matchingItem = product;
         }
@@ -52,12 +52,19 @@ cart.forEach((cartItem) =>{
                     <span>
                     Quantity: <span class="quantity-label">${cartItem.quantity}</span>
                     </span>
-                    <span class="update-quantity-link link-primary">
+                    <span class="update-quantity-link link-primary cart-item"  data-cart-id="${cartItem.productId}">
                     Update
                     </span>
                     <span class="delete-quantity-link link-primary" data-product-id="${matchingItem.id}">
                     Delete
                     </span>
+                </div>
+
+               <div class="cart-item">
+                    <div id="updateSection-${cartItem.productId}" style="display: none;">
+                        <input type="number" class="newQuantity" min="1" placeholder="New quantity">
+                        <button id="confirmButton" class="confirm-button"  data-cart-id="${cartItem.productId}">Confirm</button>
+                    </div>
                 </div>
                 </div>
 
@@ -66,13 +73,14 @@ cart.forEach((cartItem) =>{
                     Choose a delivery option:
                 </div>
                  ${deliveryOptionsHTML(matchingItem, cartItem)}
-           
                 </div>
             </div>
         </div>
         `;
 
     cartHtmlList += html;
+
+
 
 });
 document.querySelector('.order-summary').innerHTML = cartHtmlList;
@@ -114,6 +122,29 @@ document.querySelector('.order-summary').innerHTML = cartHtmlList;
      });
         return deliveryHtmllist;
 }
+
+document.querySelectorAll(`.update-quantity-link`).forEach((button) =>{
+    button.addEventListener('click', ()=>{
+        var cartItem = button.closest('.cart-item');
+        console.log(cartItem);
+        document.getElementById(`updateSection-${cartItem}`).style.display = 'block';
+    });
+});
+
+document.querySelectorAll('.confirm-button').forEach((button)=>{
+    button.addEventListener('click', ()=>{
+        let newCartQuantity = document.querySelector('.newQuantity').value;
+        let cartItemId = button.dataset.cartId;
+        if(newCartQuantity > 0){
+        updateCart(cartItemId, newCartQuantity);
+        renderOrderSummary();
+        }else{
+            alert('Please Enter valid quantity');
+        }
+        // Hide the update section after confirmation
+        document.getElementById('updateSection').style.display = 'none';
+    })
+})
 
 document.querySelectorAll('.delivery-option').forEach((option) =>{
     option.addEventListener('click', ()=>{

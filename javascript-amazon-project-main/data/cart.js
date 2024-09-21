@@ -29,6 +29,22 @@ export function saveToStorage(){
     localStorage.setItem('cart', JSON.stringify(cart));
 }
 
+export function updateCart(productsId, newCartQuantity){
+   let matchingCart;
+   cart.forEach((cartItem) =>{
+    if(cartItem.productId === productsId){
+        matchingCart = cartItem;
+
+    } 
+   }); 
+   if(matchingCart){
+    matchingCart.quantity = newCartQuantity;
+   }
+   console.log(matchingCart.quantity);
+   saveToStorage();
+
+}
+
 export function addToCart(productId){
     let matchingItem;
     cart.forEach((cartItem) => {
