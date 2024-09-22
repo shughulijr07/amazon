@@ -126,8 +126,9 @@ document.querySelector('.order-summary').innerHTML = cartHtmlList;
 document.querySelectorAll(`.update-quantity-link`).forEach((button) =>{
     button.addEventListener('click', ()=>{
         var cartItem = button.closest('.cart-item');
-        console.log(cartItem);
-        document.getElementById(`updateSection-${cartItem}`).style.display = 'block';
+        let productId = cartItem.getAttribute('data-cart-id');
+
+        document.getElementById(`updateSection-${productId}`).style.display = 'block';
     });
 });
 
