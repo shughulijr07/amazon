@@ -10,7 +10,6 @@ cart.forEach((cartItem) =>{
     let productId = cartItem.productId;
     let matchingItem;
     products.forEach((product) =>{
-
         if(product.id === productId){
             matchingItem = product;
         }
@@ -144,7 +143,8 @@ document.querySelectorAll('.confirm-button').forEach((button)=>{
         }
         // Hide the update section after confirmation
         document.getElementById(`updateSection-${cartItemId}`).style.display = 'none';
-    })
+        renderPaymentSummary();
+    });
 })
 
 document.querySelectorAll('.delivery-option').forEach((option) =>{

@@ -8,8 +8,8 @@ export function renderPaymentSummary() {
   let totalDeliveryCost = 0;
   cart.forEach((cartItem) => {
     let product = getproduct(cartItem.productId);
+    console.log(product)
     totalProductPrice += product.price * cartItem.quantity;
-
     //This is the code to get total Cost of delivery for all products in the cart
     let deliveryOption = getDeliveryOption(cartItem.deliveryOptionId);
     totalDeliveryCost += deliveryOption.price;

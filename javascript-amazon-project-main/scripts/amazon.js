@@ -1,7 +1,6 @@
 import {products,} from "../data/products.js";
 import { addToCart, updateQuantity } from "../data/cart.js";
 
-console.log(products);
 let productHtmlList = '';
 products.forEach((product) =>{
   

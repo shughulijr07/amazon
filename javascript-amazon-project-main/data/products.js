@@ -24,12 +24,11 @@ class Product{
   };
 
    getStarsUrl() {
-    return `images/ratings/rating-${this.rating.stars *10}.png`
+    return `images/ratings/rating-${this.rating.stars * 10 }.png`
   }
 
   getPrice(){ 
-    let price = this.price * 10;
-    return `Tsh ${price.toLocaleString()}`;
+    return `Tsh ${this.price.toLocaleString()}`;
   }
 
   extraInfoHtml(){
