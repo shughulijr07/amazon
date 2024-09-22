@@ -60,9 +60,9 @@ cart.forEach((cartItem) =>{
                     </span>
                 </div>
 
-               <div class="cart-item">
+               <div class="cart-item mt-10px" >
                     <div id="updateSection-${cartItem.productId}" style="display: none;">
-                        <input type="number" class="newQuantity" min="1" placeholder="New quantity">
+                        <input type="number" class="newQuantity-${cartItem.productId}" min="1" placeholder="New quantity">
                         <button id="confirmButton" class="confirm-button"  data-cart-id="${cartItem.productId}">Confirm</button>
                     </div>
                 </div>
@@ -127,15 +127,15 @@ document.querySelectorAll(`.update-quantity-link`).forEach((button) =>{
     button.addEventListener('click', ()=>{
         var cartItem = button.closest('.cart-item');
         let productId = cartItem.getAttribute('data-cart-id');
-
         document.getElementById(`updateSection-${productId}`).style.display = 'block';
     });
 });
 
 document.querySelectorAll('.confirm-button').forEach((button)=>{
     button.addEventListener('click', ()=>{
-        let newCartQuantity = document.querySelector('.newQuantity').value;
         let cartItemId = button.dataset.cartId;
+        let newCartQuantity = document.querySelector(`.newQuantity-${cartItemId}`).value;
+        console.log(newCartQuantity)
         if(newCartQuantity > 0){
         updateCart(cartItemId, newCartQuantity);
         renderOrderSummary();
@@ -143,7 +143,7 @@ document.querySelectorAll('.confirm-button').forEach((button)=>{
             alert('Please Enter valid quantity');
         }
         // Hide the update section after confirmation
-        document.getElementById('updateSection').style.display = 'none';
+        document.getElementById(`updateSection-${cartItemId}`).style.display = 'none';
     })
 })
 

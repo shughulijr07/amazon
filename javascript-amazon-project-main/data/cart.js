@@ -40,7 +40,6 @@ export function updateCart(productsId, newCartQuantity){
    if(matchingCart){
     matchingCart.quantity = newCartQuantity;
    }
-   console.log(matchingCart.quantity);
    saveToStorage();
 
 }
