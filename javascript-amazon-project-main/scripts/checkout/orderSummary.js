@@ -140,7 +140,7 @@ document.querySelectorAll('.confirm-button').forEach((button)=>{
     button.addEventListener('click', ()=>{
         let cartItemId = button.dataset.cartId;
         let newCartQuantity = document.querySelector(`.newQuantity-${cartItemId}`).value;
-        console.log(newCartQuantity)
+
         if(newCartQuantity > 0){
         updateCart(cartItemId, newCartQuantity);
         renderOrderSummary();
