@@ -1,4 +1,4 @@
-import { cart , removeToCart, updateCart, updateDeliveryOption } from "../../data/cart.js";
+import { cart , removeToCart, updateCart, updateDeliveryOption, updateQuantity } from "../../data/cart.js";
 import { products } from "../../data/products.js";
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import {deliveryOptions} from "../../data/deliveryOptions.js"
@@ -122,6 +122,13 @@ document.querySelector('.order-summary').innerHTML = cartHtmlList;
         return deliveryHtmllist;
 }
 
+
+let qntyHtml = `
+     Checkout (<a class="return-to-home-link cart-quantity"  
+            href="amazon.html">${updateQuantity()}</a>)
+`;
+document.querySelector('.checkout-header-middle-section').innerHTML = qntyHtml;
+
 document.querySelectorAll(`.update-quantity-link`).forEach((button) =>{
     button.addEventListener('click', ()=>{
         var cartItem = button.closest('.cart-item');
@@ -145,7 +152,7 @@ document.querySelectorAll('.confirm-button').forEach((button)=>{
         document.getElementById(`updateSection-${cartItemId}`).style.display = 'none';
         renderPaymentSummary();
     });
-})
+});
 
 document.querySelectorAll('.delivery-option').forEach((option) =>{
     option.addEventListener('click', ()=>{
