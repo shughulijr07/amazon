@@ -122,7 +122,6 @@ document.querySelector('.order-summary').innerHTML = cartHtmlList;
         return deliveryHtmllist;
 }
 
-
 let qntyHtml = `
      Checkout (<a class="return-to-home-link cart-quantity"  
             href="amazon.html">${updateQuantity()}</a>)

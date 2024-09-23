@@ -69,6 +69,12 @@ products.forEach((product) =>{
         });
     });
 
+    let cartHtml = `
+        <span>${updateQuantity()}</span>
+    `;
+
+    document.querySelector('.cart-quantity').innerHTML = cartHtml;
+
 // loadProducts(renderProductGrid);
 
 // function renderProductGrid(){
