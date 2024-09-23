@@ -1,4 +1,4 @@
-import { cart } from "../../data/cart.js";
+import { cart, updateQuantity } from "../../data/cart.js";
 import { getDeliveryOption } from "../../data/deliveryOptions.js";
 import { products } from "../../data/products.js";
 import { getproduct } from "../../data/products.js";
@@ -24,7 +24,7 @@ export function renderPaymentSummary() {
           </div>
 
           <div class="payment-summary-row">
-            <div>Items (3):</div>
+            <div>Items (${updateQuantity()}):</div>
             <div class="payment-summary-money">Tsh ${totalProductPrice.toLocaleString()}</div>
           </div>
 
