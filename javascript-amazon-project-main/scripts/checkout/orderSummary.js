@@ -173,6 +173,7 @@ document.querySelectorAll('.delete-quantity-link').forEach((button)=>{
         let container = document.querySelector(`.cart-item-container-${productId}`);
         container.remove();
 
+        renderOrderSummary();
         renderPaymentSummary();
 
      })
