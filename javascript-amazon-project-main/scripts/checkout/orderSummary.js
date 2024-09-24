@@ -130,7 +130,7 @@ document.querySelector('.checkout-header-middle-section').innerHTML = qntyHtml;
 
 document.querySelectorAll(`.update-quantity-link`).forEach((button) =>{
     button.addEventListener('click', ()=>{
-        var cartItem = button.closest('.cart-item');
+        var cartItem = button.closest('.cart-item'); //get properties of an element 
         let productId = cartItem.getAttribute('data-cart-id');
         document.getElementById(`updateSection-${productId}`).style.display = 'block';
     });

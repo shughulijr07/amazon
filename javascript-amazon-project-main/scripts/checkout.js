@@ -5,26 +5,3 @@ import { cart } from '../data/cart.js';
 
 renderOrderSummary();
 renderPaymentSummary();
-
-
-// loadProducts(displayCart);
-
-// function displayCart(){
-//     renderOrderSummary();
-//     renderPaymentSummary();
-// }
-
-/* If solution above fail try this one below
-new Promise((resolve) =>{
-    loadProducts(() =>{
-        resolve();
-    })
-}).then(() =>{
-   renderOrderSummary();
-   renderPaymentSummary();
-});
-
-*/
-
-
-

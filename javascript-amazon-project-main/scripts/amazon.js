@@ -2,7 +2,7 @@ import {products,} from "../data/products.js";
 import { addToCart, updateQuantity } from "../data/cart.js";
 
 function renderProductList(){
-  let productHtmlList = '';
+let productHtmlList = '';
 products.forEach((product) =>{
   
     let html = `
@@ -28,9 +28,9 @@ products.forEach((product) =>{
             ${product.getPrice()}
           </div>
 
-          <div class="product-quantity-container">
+          <div class="product-quantity-container-${product.id}" id="selected">
             <select>
-              <option selected value="1">1</option>
+              <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
               <option value="4">4</option>
@@ -57,15 +57,16 @@ products.forEach((product) =>{
           </button>
         </div>
     `;
-    productHtmlList += html;
+     productHtmlList += html;
 });
     document.querySelector('.products-grid').innerHTML = productHtmlList;
 
     document.querySelectorAll('.add-to-cart-button').forEach((button) =>{
         button.addEventListener('click', ()=>{
            let productId = button.dataset.productId;
-           
-           addToCart(productId);
+           let quantityElement = document.querySelector(`.product-quantity-container-${productId}`);
+           let quantityValue = Number(quantityElement.firstElementChild.value);
+           addToCart(productId,quantityValue);
            renderProductList();
            updateQuantity();
         });
