@@ -4,6 +4,10 @@ import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import {deliveryOptions} from "../../data/deliveryOptions.js"
 import { renderPaymentSummary } from "./paymentSummary.js";
 
+let today = dayjs();
+let deliveryDate = today.add(1, 'days');
+let dateString = deliveryDate.format('dddd, MMMM D');
+
 export function renderOrderSummary(){
 let cartHtmlList = '';
 cart.forEach((cartItem) =>{
@@ -78,9 +82,6 @@ cart.forEach((cartItem) =>{
         `;
 
     cartHtmlList += html;
-
-
-
 });
 document.querySelector('.order-summary').innerHTML = cartHtmlList;
     // This is a function to generate the html of delivery options

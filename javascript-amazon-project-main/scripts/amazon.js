@@ -1,10 +1,23 @@
-import {products,} from "../data/products.js";
+import {products} from "../data/products.js";
 import { addToCart, updateQuantity } from "../data/cart.js";
 
+// The code below is for search engine
+let displayProducts = [];
+document.querySelector('.search-button').addEventListener('click', ()=>{
+    let queryElement = document.querySelector('.search-bar');
+    let query = queryElement.value.toLowerCase();
+    const results = products.filter(product => {    
+    if(product.name.toLowerCase().includes(query)){
+      displayProducts.push(product);
+    }
+    });
+    queryElement.value = '';
+});
+// End of search engine code
+  
 function renderProductList(){
 let productHtmlList = '';
 products.forEach((product) =>{
-  
     let html = `
         <div class="product-container">
           <div class="product-image-container">

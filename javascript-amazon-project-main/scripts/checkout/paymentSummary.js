@@ -1,6 +1,5 @@
-import { cart, updateQuantity } from "../../data/cart.js";
+import { clearCart, cart, updateQuantity } from "../../data/cart.js";
 import { getDeliveryOption } from "../../data/deliveryOptions.js";
-import { products } from "../../data/products.js";
 import { getproduct } from "../../data/products.js";
 
 export function renderPaymentSummary() {
@@ -47,11 +46,18 @@ export function renderPaymentSummary() {
             <div>Order total:</div>
             <div class="payment-summary-money">Tsh ${totalCost.toLocaleString()}</div>
           </div>
-
-          <button class="place-order-button button-primary">
+ 
+          <button class="place-order-button button-primary" >
             Place your order
           </button>
       `;
 
       document.querySelector('.payment-summary').innerHTML = paymentSummaryHtml;
+
+      document.querySelector('.place-order-button').addEventListener('click', ()=>{
+              clearCart();
+              console.log(cart)
+              window.location.href= '/javascript-amazon-project-main/orders.html';
+    });
 }
+
