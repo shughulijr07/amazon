@@ -1,3 +1,4 @@
+import { updateQuantity } from "../data/cart.js";
 import { orders } from "../data/order.js";
 import { orderItems } from "../data/orderItems.js";
 import { getproduct, products } from "../data/products.js";
@@ -70,5 +71,10 @@ orders.forEach((order) => {
         // Append the order HTML to the orderList
         orderList += orderListHtml;
 });
-
 document.querySelector('.orders-grid').innerHTML = orderList;
+
+let html = `
+   <span>${updateQuantity()}</span>
+`;
+
+document.querySelector('.cart-quantity').innerHTML = html;

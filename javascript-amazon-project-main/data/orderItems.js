@@ -15,6 +15,13 @@ export let orderItems = [
     },
     {
         orderItemId: '3',
+        orderId: '3',
+        productId: '8c9c52b5-5a19-4bcb-a5d1-158a74287c53',
+        quantity: 9,
+        totalPrice: 70000,
+    },
+    {
+        orderItemId: '3',
         orderId: '2',
         productId: '8c9c52b5-5a19-4bcb-a5d1-158a74287c53',
         quantity: 1,

@@ -125,7 +125,7 @@ document.querySelector('.order-summary').innerHTML = cartHtmlList;
 
 let qntyHtml = `
      Checkout (<a class="return-to-home-link cart-quantity"  
-            href="amazon.html">${updateQuantity()}</a>)
+            href="amazon.html">${updateQuantity()}</a>) 
 `;
 document.querySelector('.checkout-header-middle-section').innerHTML = qntyHtml;
 
