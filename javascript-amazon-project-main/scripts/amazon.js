@@ -2,17 +2,17 @@ import {products} from "../data/products.js";
 import { addToCart, updateQuantity } from "../data/cart.js";
 
 // The code below is for search engine
-let displayProducts = [];
-document.querySelector('.search-button').addEventListener('click', ()=>{
-    let queryElement = document.querySelector('.search-bar');
-    let query = queryElement.value.toLowerCase();
-    const results = products.filter(product => {    
-    if(product.name.toLowerCase().includes(query)){
-      displayProducts.push(product);
-    }
-    });
-    queryElement.value = '';
-});
+// let displayProducts = [];
+// document.querySelector('.search-button').addEventListener('click', ()=>{
+//     let queryElement = document.querySelector('.search-bar');
+//     let query = queryElement.value.toLowerCase();
+//     const results = products.filter(product => {    
+//     if(product.name.toLowerCase().includes(query)){
+//       displayProducts.push(product);
+//     }
+//     });
+//     queryElement.value = '';
+// });
 // End of search engine code
   
 function renderProductList(){
@@ -56,7 +56,7 @@ products.forEach((product) =>{
             </select>
           </div>
 
-          ${product.extraInfoHtml()}
+          <!-- ${product.extraInfoHtml()} This is for extra info--!>
 
           <div class="product-spacer"></div>
 
@@ -90,6 +90,36 @@ products.forEach((product) =>{
     `;
 
     document.querySelector('.cart-quantity').innerHTML = cartHtml;
+  
 }
 
 renderProductList();
+
+// The code is for back to top button
+const backToTopButton = document.querySelector('.back-to-top');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 300) {
+    backToTopButton.style.display = 'block';
+  } else {
+    backToTopButton.style.display = 'none';
+  }
+});
+
+document.querySelectorAll('.product-container').forEach((container) =>{
+  container.addEventListener('click', ()=>{
+    
+  })
+}) 
+
+backToTopButton.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+});
+
+//End of back to top button code
+
+
+

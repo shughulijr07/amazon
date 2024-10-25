@@ -1,5 +1,63 @@
 .main {
   margin-top: 60px;
+  flex-grow: 1;
+  padding: 20px;
+}
+
+/* Sidebar styling */
+.content-wrapper {
+  display: flex;
+}
+.suggestions {
+  color: black;
+  background-color: white;
+  border: 1px solid #ccc;
+  position: absolute;
+  z-index: 1000;
+  width: 100%;
+}
+
+.suggestions div {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.suggestions div:hover {
+  background-color: #f0f0f0;
+}
+
+.sidebar {
+  width: 100px;
+  background-color: #f8f8f8;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  margin-top: 40px; /* Add this to push the side bar below the header */
+}
+
+.sidebar h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  display: block; /* Ensures it is displayed */
+  color: #333;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin: 10px 0;
+}
+
+.sidebar ul li a {
+  color: #333;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.sidebar ul li a:hover {
+  text-decoration: underline;
 }
 
 .products-grid {
@@ -63,6 +121,10 @@
   .products-grid {
     grid-template-columns: 1fr;
   }
+}
+.product-container:hover .add-to-cart-button {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .product-container {
@@ -153,4 +215,56 @@
   width: 100%;
   padding: 8px;
   border-radius: 50px;
+
+  opacity: 0;
+  background-color: rgb(219, 58, 52);
+  border: none;
+  color: white;
+  font-weight: bold;
+}
+
+/* Footer styling */
+footer {
+  background-color: #232f3e;
+  color: white;
+  padding: 20px 0;
+  margin-top: 20px;
+  width: 100%; /* Ensure footer takes full width */
+  position: relative; /* Ensures proper stacking with other content */
+}
+
+.footer-content {
+  border-top: 1px solid #555;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.footer-column h4 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.footer-column ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-column ul li a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 10px;
+  border-top: 1px solid #555;
 }
