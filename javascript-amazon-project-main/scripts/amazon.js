@@ -106,11 +106,11 @@ window.addEventListener('scroll', () => {
   }
 });
 
-document.querySelectorAll('.product-container').forEach((container) =>{
-  container.addEventListener('click', ()=>{
-    
-  })
-}) 
+// document.querySelectorAll('.product-container').forEach((container) =>{
+//   container.addEventListener('click', ()=>{
+//     window.location.href= '/javascript-amazon-project-main/single-product.html';
+//   })
+// }) 
 
 backToTopButton.addEventListener('click', () => {
   window.scrollTo({

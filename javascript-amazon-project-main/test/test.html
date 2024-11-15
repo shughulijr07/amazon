@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Malipo kwa Simu</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Malipo kwa Mitandao ya Simu</h1>
+    <form id="paymentForm">
+      <label for="network">Chagua Mtandao:</label>
+      <select id="network" name="network" required>
+        <option value="">--Chagua--</option>
+        <option value="mpesa">M-Pesa</option>
+        <option value="tigo-pesa">Tigo Pesa</option>
+        <option value="airtel-money">Airtel Money</option>
+        <option value="halotel-pesa">Halotel Pesa</option>
+      </select>
+
+      <label for="phone">Namba ya Simu:</label>
+      <input type="tel" id="phone" name="phone" placeholder="07XXXXXXXX" required>
+
+      <label for="amount">Kiasi cha Malipo (TZS):</label>
+      <input type="number" id="amount" name="amount" min="500" placeholder="Ingiza kiasi" required>
+
+      <button type="submit">Lipia</button>
+    </form>
+    <div id="confirmation" class="hidden">
+      <p>Asante kwa kuchagua kulipa. Maelezo ya malipo yako:</p>
+      <p><strong>Mtandao:</strong> <span id="confirmNetwork"></span></p>
+      <p><strong>Namba ya Simu:</strong> <span id="confirmPhone"></span></p>
+      <p><strong>Kiasi:</strong> TZS <span id="confirmAmount"></span></p>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
