@@ -1,22 +1,24 @@
 import { addToCart, cart, updateCartNumber } from "../data/cart.js";
 import { products } from "../data/products.js";
 
-  let searchInput = document.querySelector('.search-bar');
-  searchInput.addEventListener('input', function(){
-    let query = this.value;
-    let filtered = filterProducts(query); //filter products first
-    displayResults(filtered); //Take product filtered and display to the screen
+  let searchBar = document.querySelector('.search-bar');
+
+  searchBar.addEventListener('input', function(){
+    let query = searchBar.value;
+    let filtered = filterProduct(query);
+    displayResults(filtered);
   });
 
-  function filterProducts(query){
-    let lowerQuery = query.toLowerCase();
-
+  function filterProduct(query){
     return products.filter(product =>{
+      let lowerQuery = query.toLowerCase();
       let nameMatch = product.name.toLowerCase().includes(lowerQuery);
-      let keywordMatch = product.keywords.some(keyword =>  keyword.toLowerCase().includes(lowerQuery)
-      );
-      return nameMatch || keywordMatch;
-    })
+      let keywordMatch = product.keywords.some(keyword =>
+        keyword.toLowerCase().includes(lowerQuery)
+        );
+
+      return nameMatch || keywordMatch;  
+    });
   }
 
   function displayResults(products){
@@ -69,9 +71,9 @@ import { products } from "../data/products.js";
     
             <div class="product-spacer"></div>
     
-            <div class="added-to-cart">
+            <div class="added-to-cart message-${product.id}">
               <img src="images/icons/checkmark.png">
-              Added
+              Added Successful
             </div>
     
             <button class="add-to-cart-button button-primary" data-product-id="${product.id}">
@@ -87,11 +89,22 @@ import { products } from "../data/products.js";
   
   displayResults(products);
 
-  document.querySelectorAll('.add-to-cart-button').forEach((addButton)=>{
-    addButton.addEventListener('click', ()=>{
-    let productId = addButton.dataset.productId;
-    let selectedValue = document.querySelector(`.selected-${productId}`).value;
-    let selected = Number(selectedValue);  
-    addToCart(productId,selected); 
-    })
-  })
+  // Badala ya kuweka event moja moja kwenye kila button, tumeweka listener moja kwenye mzazi (.products-grid), then tumeangalia kama kilichobonyezwa kina class ya "Add to Cart"
+  document.querySelector('.products-grid').addEventListener('click', function(event) {
+    if (event.target.classList.contains('add-to-cart-button')) {
+      const productId = event.target.dataset.productId;
+      const selectedQuantity = parseInt(
+        document.querySelector(`.selected-${productId}`).value
+      );
+      addToCart(productId, selectedQuantity);
+
+      let messageElement = document.querySelector(`.message-${productId}`);
+      messageElement.classList.add('show-message');
+
+      setTimeout(()=>{
+        messageElement.classList.remove('show-message');
+      },1000)
+    }
+  }); 
+
+  
