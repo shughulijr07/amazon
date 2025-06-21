@@ -1,4 +1,4 @@
-import { addToCart, cart, updateCartNumber } from "../data/cart.js";
+import { addToCart } from "../data/cart.js";
 import { products } from "../data/products.js";
 
   let searchBar = document.querySelector('.search-bar');
@@ -15,7 +15,7 @@ import { products } from "../data/products.js";
       let nameMatch = product.name.toLowerCase().includes(lowerQuery);
       let keywordMatch = product.keywords.some(keyword =>
         keyword.toLowerCase().includes(lowerQuery)
-        );
+        ); //some() inarudisha true walau element moja ikikidhi vigezo, forEach() haina break; ingepitia zote hata kama tayari imepata match
 
       return nameMatch || keywordMatch;  
     });
@@ -106,5 +106,3 @@ import { products } from "../data/products.js";
       },1000)
     }
   }); 
-
-  

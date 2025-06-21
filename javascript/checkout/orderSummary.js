@@ -15,7 +15,7 @@ export function renderOrderDetail(){
     });
     // console.log(cartItem.quantity);
     let html = `
-      <div class="cart-item-container-${matchingItem.id}">
+      <div class="cart-item-container cart-item-container-${matchingItem.id}">
         <div class="delivery-date">
           Delivery date: Tuesday, June 21
         </div>
