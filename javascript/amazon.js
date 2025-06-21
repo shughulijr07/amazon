@@ -3,7 +3,7 @@ import { products } from "../data/products.js";
 
   let searchBar = document.querySelector('.search-bar');
 
-  searchBar.addEventListener('input', function(){
+  searchBar.addEventListener('input', ()=>{
     let query = searchBar.value;
     let filtered = filterProduct(query);
     displayResults(filtered);

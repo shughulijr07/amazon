@@ -57,4 +57,8 @@ export function renderPaymentSummary(){
 
       document.querySelector('.payment-summary').innerHTML = html;
       document.querySelector('.cart-total').innerHTML = updateCartNumber();
+
+      document.querySelector('.place-order-button').addEventListener('click', ()=>{
+        window.location = '/orders.html';
+      })
 }
