@@ -4,14 +4,11 @@ import { orders } from "../data/orders.js";
 import { orderItems } from "../data/orderItems.js";
 import { getProduct, products } from "../data/products.js";
 
-let orderList;
+let orderHtmlList = '';
 orders.forEach((order) => {
       let orderId = order.orderId;
-
-      // Filter to get all items that belong to the current order - Code start here
       let matchingOrderItems = orderItems.filter((orderItem) => orderItem.orderId === orderId);
 
-      // Initialize a variable to hold the HTML for the current order
       let orderItemsHtml = '';
 
       matchingOrderItems.forEach((orderItem) => {
@@ -69,9 +66,9 @@ orders.forEach((order) => {
        `;
 
         // Append the order HTML to the orderList
-        orderList += orderListHtml;
+        orderHtmlList += orderListHtml;
 });
-document.querySelector('.orders-grid').innerHTML = orderList;
+document.querySelector('.orders-grid').innerHTML = orderHtmlList;
 
 let html = `
    <span>${updateCartNumber()}</span>
