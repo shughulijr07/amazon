@@ -90,7 +90,7 @@ import { products } from "../data/products.js";
   displayResults(products);
 
   // Badala ya kuweka event moja moja kwenye kila button, tumeweka listener moja kwenye mzazi (.products-grid), then tumeangalia kama kilichobonyezwa kina class ya "Add to Cart"
-  document.querySelector('.products-grid').addEventListener('click', function(event) {
+  document.querySelector('.products-grid').addEventListener('click', (event)=> {
     if (event.target.classList.contains('add-to-cart-button')) {
       const productId = event.target.dataset.productId;
       const selectedQuantity = parseInt(
