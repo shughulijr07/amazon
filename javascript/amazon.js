@@ -106,3 +106,26 @@ import { products } from "../data/products.js";
       },1000)
     }
   }); 
+
+
+const filterButton = document.getElementById('filterButton');
+const filterOptions = document.getElementById('filterOptions');
+const optionElements = document.querySelectorAll('.filter-option');
+
+  filterButton.addEventListener('click', (e) => {
+    e.stopPropagation();
+    filterOptions.classList.toggle('hidden');
+  });
+
+  optionElements.forEach(option => {
+    option.addEventListener('click', () => {
+      filterButton.textContent = option.textContent + ' ▾';
+      filterOptions.classList.add('hidden');
+    });
+  });
+
+  document.addEventListener('click', function (event) {
+    if (!event.target.closest('.search-filter-dropdown')) {
+      filterOptions.classList.add('hidden');
+    }
+  });

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced</title>
+</head>
+<body>
+
+  <button onclick="change()" class="button">Start</button>
+
+  <button onclick="vanish()">Vanish</button>
+  <p class="show-message"></p>
+
+  <script>
+    //1.For each function
+    [
+      'AbuuMansour',
+      'UmmuMansour',
+      'Halima',
+      'Loveness',
+    ].forEach(function(value, index){
+      console.log(index);
+      console.log(value);
+    });
+    //End of for each Function
+
+    //2. Timeout func (Run code after specific time e.g Loading)
+      function change(){
+        let buttonElement = document.querySelector('.button');
+        buttonElement.innerHTML = 'Loading...';
+        setTimeout(function(){
+          buttonElement.innerHTML = 'Finished';
+        },3000)
+    //End of Timeout func   
+
+    }
+
+   //This is for vanished message
+    function vanish(){
+      document.querySelector('.show-message').innerHTML = 'Added';
+ 
+      setTimeout(function(){
+        document.querySelector('.show-message').innerHTML = '';
+      },2000)
+    }
+  </script>
+</body>
+</html>

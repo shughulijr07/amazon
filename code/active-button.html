@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Active button</title>
+
+  <style>
+    .button{
+      background-color: rgb(194, 188, 188);
+      color: white;
+      padding: 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 4px;
+    }
+
+    .is-active{
+      background-color:black;
+      color: white;
+      padding: 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <button onclick="gaming()" class="button gaming">Gaming</button>
+  <button onclick="music()" class="button music">Music</button>
+  <button onclick="tech()" class="button tech">Tech</button>
+
+  <script>
+
+    function gaming(){
+      document.querySelector('.music').classList.remove('is-active');
+      document.querySelector('.tech').classList.remove('is-active');
+      document.querySelector('.gaming').classList.add('is-active');
+    }
+
+    function music(){
+      document.querySelector('.gaming').classList.remove('is-active');
+      document.querySelector('.tech').classList.remove('is-active');
+      document.querySelector('.music').classList.add('is-active');
+    }
+
+    function tech(){
+      document.querySelector('.music').classList.remove('is-active');
+      document.querySelector('.gaming').classList.remove('is-active');
+      document.querySelector('.tech').classList.add('is-active');
+    }
+  </script>
+</body>
+</html>

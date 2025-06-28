@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amazon shipping</title>
+</head>
+<body>
+    <input placeholder="Cost of order" type="number" class="order-cost" onkeydown="afterEnter()">
+    <button onclick="calculate()">Calculate</button>  
+    <p class="show-cost"></p>
+    <script>
+
+      function afterEnter(){
+        if(event.key === 'Enter'){
+          calculate();  
+        }
+      }
+
+      function calculate(){
+        let costElement = document.querySelector('.order-cost');
+        let costValue = Number(costElement.value); //Number() convert string to a number, without it the value will be taken as string
+
+        let totalCost;  
+        if(costValue > 40){
+          costValue = costValue + 2; 
+        }
+        document.querySelector('.show-cost').innerHTML = costValue;
+      }
+
+    </script>
+</body>
+</html>
