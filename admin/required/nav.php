@@ -1,3 +1,10 @@
+
+<?php 
+    session_start();            
+        if(!isset($_SESSION['username'])){
+        header('Location: auth/session.php');
+        exit();
+    }?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
 
@@ -416,7 +423,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="login.php" class="user-item">
+                                                <a href="auth/session.php" class="user-item">
                                                     <div class="icon">
                                                         <i class="icon-log-out"></i>
                                                     </div>

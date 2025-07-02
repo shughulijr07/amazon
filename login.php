@@ -8,17 +8,23 @@
     <link rel="stylesheet" href="styles/pages/login.css">
 </head>
 <body>
-    
-    <form action="/admin/auth/login.php" class="login-form">
+    <?php 
+        if(isset($_GET['error']) && $_GET['error'] === 'wrong_password'){
+            echo "<p style='color:red'>Wrong Password</p>";
+        }elseif(isset($_GET['error']) && $_GET['error'] === 'not_found'){
+            echo "<p style='color:red'>User not found<p>";
+        }
+    ?>
+    <form action="admin/auth/login.php" class="login-form" method="POST">
         <h1 class="login-title">Login</h1>
 
         <div class="input-box">
             <i class='bx bxs-user'></i>
-            <input type="text" placeholder="Username">
+            <input type="text" placeholder="Username" name="username">
         </div>
         <div class="input-box">
             <i class='bx bxs-lock-alt'></i>
-            <input type="password" placeholder="Password">
+            <input type="password" placeholder="Password" name="password">
         </div>
 
         <div class="remember-forgot-box">

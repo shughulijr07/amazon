@@ -1,7 +1,9 @@
 
 
-                   <?php require 'required/nav.php' ?>
-                    
+                   <?php require 'required/nav.php';
+             
+                   ?>
+                   
                    <div class="main-content">
 
                         <div class="main-content-inner">
